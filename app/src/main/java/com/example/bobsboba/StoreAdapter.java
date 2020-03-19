@@ -32,8 +32,9 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 			super(v);                                                                                           //the more TextViews required, the more stuff here
 			mListener = listener;
 			v.setOnClickListener(this);
-			//name = v.findViewById(R.id.tvName);
-			//topSeller = v.findViewById(R.id.tvValue);
+			name = v.findViewById(R.id.txtName);
+			topSeller = v.findViewById(R.id.txtTopSeller);
+			location = v.findViewById(R.id.txtLocation);
 			rating = v.findViewById(R.id.txtRating);
 			logo = (ImageView) v.findViewById(R.id.ivRowLogo);
 			//logo = v.findViewById(R.id.ivLogo);
@@ -59,8 +60,10 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 		Store store = mStores.get(position);
 		System.out.println(store);
 
+		holder.name.setText(Store.getStores().get(position).getName());
+		holder.topSeller.setText(Store.getStores().get(position).getTopSeller());
+		holder.location.setText(Store.getStores().get(position).getLocation());
 		holder.rating.setText(String.valueOf(store.getRating()));
-
 		holder.logo.setImageResource(Store.getLogos().get(position));
 	}
 

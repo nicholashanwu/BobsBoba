@@ -85,16 +85,16 @@ public class Store {
 
 		ArrayList<Store> stores = new ArrayList<>();
 
-		stores.add(new Store("Coco", "Bubble Gaga", "Central", 4.9, getLogos().get(0)));
-		stores.add(new Store("ShareTea", "Bubble Gaga", "Central", 4.9, getLogos().get(1)));
-		stores.add(new Store("Chatime", "Bubble Gaga", "Central", 4.9, getLogos().get(2)));
-		stores.add(new Store("Bengong", "Bubble Gaga", "Central", 4.9, getLogos().get(3)));
-		stores.add(new Store("TS Express", "Bubble Gaga", "Central", 4.9, getLogos().get(4)));
-		stores.add(new Store("Bubble Nini", "Bubble Gaga", "Central", 4.9, getLogos().get(5)));
-		stores.add(new Store("Gong Cha", "Bubble Gaga", "Central", 4.9, getLogos().get(6)));
-		stores.add(new Store("Machi Machi", "Bubble Gaga", "Central", 4.9, getLogos().get(7)));
-		stores.add(new Store("King Tea", "Bubble Gaga", "Central", 4.9, getLogos().get(8)));
-		stores.add(new Store("No Fail", "Bubble Gaga", "Central", 4.9, getLogos().get(9)));
+		stores.add(new Store("Coco", "3 Guys", "Chatswood", 4.9, getLogos().get(0)));
+		stores.add(new Store("ShareTea", "Classic Pearl Milk Tea", "UNSW", 3.0, getLogos().get(1)));
+		stores.add(new Store("Chatime", "being trash", "Central Park", 2.5, getLogos().get(2)));
+		stores.add(new Store("Bengong", "Purple Rice Milk Tea", "Darling Square", 4.7, getLogos().get(3)));
+		stores.add(new Store("TS Express", "Earl Grey Milk Tea", "Town Hall", 4.9, getLogos().get(4)));
+		stores.add(new Store("Bubble Nini", "Strawberry Kisses", "Broadway", 4.3, getLogos().get(5)));
+		stores.add(new Store("Gong Cha", "Matcha Red Bean", "Haymarket", 4.1, getLogos().get(6)));
+		stores.add(new Store("Machi Machi", "Black Milk Tea w/ Panna Cotta", "Town Hall", 4.2, getLogos().get(7)));
+		stores.add(new Store("King Tea", "Bubble Gaga", "Haymarket", 4.0, getLogos().get(8)));
+		stores.add(new Store("No Fail", "Bubble Gaga", "Anzac Parade", 4.0, getLogos().get(9)));
 
 		return stores;
 	}
