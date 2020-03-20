@@ -61,7 +61,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 		System.out.println(store);
 
 		holder.name.setText(Store.getStores().get(position).getName());
-		holder.topSeller.setText(Store.getStores().get(position).getTopSeller());
+		holder.topSeller.setText("known for " + Store.getStores().get(position).getTopSeller());
 		holder.location.setText(Store.getStores().get(position).getLocation());
 		holder.rating.setText(String.valueOf(store.getRating()));
 		holder.logo.setImageResource(Store.getLogos().get(position));
