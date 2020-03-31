@@ -6,9 +6,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHolder> {
     private ArrayList<Store> mStores = new ArrayList<Store>(Store.getStores());
@@ -20,7 +20,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
     }
 
     public interface RecyclerViewClickListener {
-        void onClick(View view, int position);
+        void onClick(View view, int position, int imageId);
     }
 
     public static class StoreViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {        //inner class CoinViewHolder that contains the content of each row
@@ -43,7 +43,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.StoreViewHol
 
         @Override
         public void onClick(View view) {
-            mListener.onClick(view, getAdapterPosition());
+            mListener.onClick(view, getAdapterPosition(), R.id.ivRowLogo);
 
         }
     }

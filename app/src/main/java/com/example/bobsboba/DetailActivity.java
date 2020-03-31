@@ -3,12 +3,19 @@ package com.example.bobsboba;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -19,19 +26,43 @@ public class DetailActivity extends AppCompatActivity {
     private TextView mRating;
     private ImageView mLogo;
     private ImageView mSearch;
+	private CardView mCvBg;
+	private FloatingActionButton mFabBack;
+	private FrameLayout mFlIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+		ActionBar actionBar = getSupportActionBar();
+		actionBar.hide();
         setContentView(R.layout.activity_detail);
+
+		try {
+			wait(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+
+		mCvBg = findViewById(R.id.cvBg);
+		mFabBack = findViewById(R.id.fabBack);
+		mFlIcon = findViewById(R.id.flIcon);
+
+
+		YoYo.with(Techniques.SlideInUp).duration(500).playOn(mCvBg);
+
+		YoYo.with(Techniques.RotateIn).duration(300).playOn(mFabBack);
+		YoYo.with(Techniques.RotateIn).duration(300).playOn(mFlIcon);
+
 
         Intent intent = getIntent();
         int position = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 0);
-        int coinSymbol = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 0);
-
-        getValues(coinSymbol);
+		int imageId = intent.getIntExtra(MainActivity.IMAGE_ID, 0);
 
         mStore = Store.getStores().get(position);
+		getValues(position);
+
+
 
     }
 
