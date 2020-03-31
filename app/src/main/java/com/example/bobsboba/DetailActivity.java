@@ -2,8 +2,12 @@ package com.example.bobsboba;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,6 +33,9 @@ public class DetailActivity extends AppCompatActivity {
 	private CardView mCvBg;
 	private FloatingActionButton mFabBack;
 	private FrameLayout mFlIcon;
+	private ImageButton mBtnBack;
+	private ImageButton mBtnSearch;
+	private TextView mTxtTopSeller;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,32 +44,38 @@ public class DetailActivity extends AppCompatActivity {
 		actionBar.hide();
         setContentView(R.layout.activity_detail);
 
-		try {
-			wait(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+        mCvBg = findViewById(R.id.cvBg);
+        mFlIcon = findViewById(R.id.flIcon);
+        mBtnBack = findViewById(R.id.btnBack);
+        mBtnSearch = findViewById(R.id.btnSearch);
+        mTxtTopSeller = findViewById(R.id.txtTopSeller);
 
-
-		mCvBg = findViewById(R.id.cvBg);
-		mFabBack = findViewById(R.id.fabBack);
-		mFlIcon = findViewById(R.id.flIcon);
-
-
-		YoYo.with(Techniques.SlideInUp).duration(500).playOn(mCvBg);
-
-		YoYo.with(Techniques.RotateIn).duration(300).playOn(mFabBack);
-		YoYo.with(Techniques.RotateIn).duration(300).playOn(mFlIcon);
-
+        mCvBg.setVisibility(View.GONE);
+        YoYo.with(Techniques.BounceInUp).duration(1500).delay(100).playOn(mCvBg);
+        mCvBg.setVisibility(View.VISIBLE);
 
         Intent intent = getIntent();
-        int position = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 0);
+        final int position = intent.getIntExtra(MainActivity.EXTRA_MESSAGE, 0);
 		int imageId = intent.getIntExtra(MainActivity.IMAGE_ID, 0);
+
+		mTxtTopSeller.setText("They are known for their " + mTxtTopSeller.getText() + ".");
 
         mStore = Store.getStores().get(position);
 		getValues(position);
 
+		mBtnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
+		mBtnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                searchCoin(Store.getStores().get(position).getName());
+            }
+        });
 
     }
 
